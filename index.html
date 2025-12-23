@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandify Studio</title>
+     <link rel="icon" type="image/png" href="Gemini_Generated_Image_ok4hogok4hogok4h.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in.gsap-ready {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">Brandify Studio</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-purple-600 transition-colors font-medium">Inicio</a>
+                    <a href="#nosotros" class="hover:text-purple-600 transition-colors font-medium">Nosotros</a>
+                    <a href="#servicios" class="hover:text-purple-600 transition-colors font-medium">Servicios</a>
+                    <a href="#proyectos" class="hover:text-purple-600 transition-colors font-medium">Proyectos</a>
+                    <a href="#contacto" class="hover:text-purple-600 transition-colors font-medium">Contacto</a>
+                </div>
+                <button class="md:hidden text-2xl" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white shadow-lg" id="mobileMenu">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#inicio" class="hover:text-purple-600 transition-colors font-medium">Inicio</a>
+                <a href="#nosotros" class="hover:text-purple-600 transition-colors font-medium">Nosotros</a>
+                <a href="#servicios" class="hover:text-purple-600 transition-colors font-medium">Servicios</a>
+                <a href="#proyectos" class="hover:text-purple-600 transition-colors font-medium">Proyectos</a>
+                <a href="#contacto" class="hover:text-purple-600 transition-colors font-medium">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-blue-50 opacity-60"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="floating mb-8">
+                    <i class="fas fa-palette text-8xl gradient-text"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in">
+                    <span class="gradient-text">Brandify Studio</span>
+                </h1>
+                <p class="text-2xl md:text-3xl text-gray-600 mb-8 fade-in font-light">
+                    Creamos marcas que se recuerdan
+                </p>
+                <p class="text-lg md:text-xl text-gray-500 mb-12 fade-in max-w-2xl mx-auto">
+                    Transformamos ideas en identidades poderosas que conectan con tu audiencia y generan resultados medibles.
+                </p>
+                <button class="btn-primary text-white px-10 py-4 rounded-full text-lg font-semibold fade-in inline-flex items-center space-x-2" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">
+                    <span>Solicitar asesoría</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-purple-200 rounded-full opacity-20 floating"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 floating" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- Quiénes Somos -->
+    <section id="nosotros" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 section-title fade-in">
+                    Quiénes Somos
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center mt-16">
+                    <div class="fade-in">
+                        <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl p-12 flex items-center justify-center">
+                            <i class="fas fa-users text-8xl text-purple-600"></i>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Somos expertos en construcción de marcas</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                            En Brandify Studio, nos especializamos en desarrollar identidades de marca memorables y estratégicas que impulsan el crecimiento empresarial. Con más de una década de experiencia, nuestro equipo multidisciplinario combina creatividad, estrategia y tecnología.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            Trabajamos con empresas de todos los tamaños, desde startups hasta corporaciones, ayudándoles a destacar en mercados competitivos mediante soluciones de branding integrales y personalizadas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 section-title fade-in">
+                Nuestros Servicios
+            </h2>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto text-lg fade-in">
+                Soluciones integrales de branding diseñadas para impulsar tu negocio
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                <!-- Servicio 1 -->
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Branding</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Desarrollamos estrategias de marca completas que definen tu propuesta de valor y posicionamiento en el mercado.
+                    </p>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-paint-brush text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Identidad Visual</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Creamos logotipos, paletas de colores y sistemas visuales coherentes que representan tu esencia.
+                    </p>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Diseño Digital</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Diseñamos experiencias digitales atractivas para web, redes sociales y plataformas móviles.
+                    </p>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Estrategia de Marca</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Planificamos la comunicación y evolución de tu marca para alcanzar objetivos de negocio específicos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por Qué Elegirnos -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 section-title fade-in">
+                Porqué elegirnos?
+            </h2>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto text-lg fade-in">
+                Nos diferenciamos por nuestra metodología probada y compromiso con la excelencia
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-compass text-4xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Diseño Estratégico</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Cada decisión visual responde a objetivos de negocio claros y medibles.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-target text-4xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Enfoque en Resultados</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Medimos el impacto de nuestro trabajo con KPIs específicos y reportes detallados.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-check text-4xl text-pink-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Atención Personalizada</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Asignamos un equipo dedicado que se convierte en tu socio estratégico.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-4xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Identidad Sólida</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Construimos marcas consistentes y duraderas que resisten el paso del tiempo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos" class="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 section-title fade-in">
+                Proyectos Destacados
+            </h2>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto text-lg fade-in">
+                Casos de éxito que demuestran nuestro compromiso con la excelencia
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-16">
+                <!-- Proyecto 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden card-hover fade-in shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-store text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Retail Innovation</h3>
+                        <p class="text-gray-600 mb-4">Rebranding completo para cadena de retail, aumentando reconocimiento de marca en 150%.</p>
+                        <span class="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold">Branding</span>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden card-hover fade-in shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-rocket text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Tech Startup</h3>
+                        <p class="text-gray-600 mb-4">Identidad visual moderna para startup tecnológica que logró financiamiento serie A.</p>
+                        <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">Identidad Visual</span>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden card-hover fade-in shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-heart text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Wellness Brand</h3>
+                        <p class="text-gray-600 mb-4">Estrategia digital integral que incrementó engagement en redes sociales un 300%.</p>
+                        <span class="inline-block px-4 py-2 bg-pink-100 text-pink-600 rounded-full text-sm font-semibold">Diseño Digital</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 section-title fade-in">
+                    Comencemos tu Proyecto
+                </h2>
+                <p class="text-center text-gray-600 mb-16 text-lg fade-in">
+                    Cuéntanos sobre tu marca y te responderemos en menos de 24 horas
+                </p>
+                
+                <form id="contactForm" class="bg-gradient-to-br from-gray-50 to-purple-50 rounded-3xl p-8 md:p-12 shadow-xl fade-in">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2" for="nombre">
+                                <i class="fas fa-user mr-2 text-purple-600"></i>Nombre Completo
+                            </label>
+                            <input 
+                                type="text" 
+                                id="nombre" 
+                                class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-colors"
+                                placeholder="Tu nombre"
+                            >
+                            <span class="text-red-500 text-sm hidden" id="nombreError">Por favor ingresa tu nombre</span>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2" for="email">
+                                <i class="fas fa-envelope mr-2 text-purple-600"></i>Email
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-colors"
+                                placeholder="tu@email.com"
+                            >
+                            <span class="text-red-500 text-sm hidden" id="emailError">Por favor ingresa un email válido</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-semibold mb-2" for="mensaje">
+                            <i class="fas fa-comment-dots mr-2 text-purple-600"></i>Mensaje
+                        </label>
+                        <textarea 
+                            id="mensaje" 
+                            rows="6" 
+                            class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-colors resize-none"
+                            placeholder="Cuéntanos sobre tu proyecto..."
+                        ></textarea>
+                        <span class="text-red-500 text-sm hidden" id="mensajeError">Por favor escribe un mensaje</span>
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="btn-primary w-full text-white px-8 py-4 rounded-xl text-lg font-semibold flex items-center justify-center space-x-2"
+                    >
+                        <span>Enviar Mensaje</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-green-600 font-semibold hidden" id="successMessage">
+                            <i class="fas fa-check-circle mr-2"></i>¡Mensaje enviado con éxito! Te contactaremos pronto.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">Brandify Studio</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Creamos marcas que se recuerdan y generan impacto real en el mercado.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#nosotros" class="hover:text-purple-400 transition-colors">Nosotros</a></li>
+                        <li><a href="#servicios" class="hover:text-purple-400 transition-colors">Servicios</a></li>
+                        <li><a href="#proyectos" class="hover:text-purple-400 transition-colors">Proyectos</a></li>
+                        <li><a href="#contacto" class="hover:text-purple-400 transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-behance text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Brandify Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate elements on scroll
+        gsap.utils.toArray('.fade-in').forEach(elem => {
+            gsap.from(elem, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 85%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-blur', 'shadow-lg');
+            } else {
+                navbar.classList.remove('nav-blur', 'shadow-lg');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        const nombreInput = document.getElementById('nombre');
+        const emailInput = document.getElementById('email');
+        const mensajeInput = document.getElementById('mensaje');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Reset errors
+            document.getElementById('nombreError').classList.add('hidden');
+            document.getElementById('emailError').classList.add('hidden');
+            document.getElementById('mensajeError').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+            
+            // Validate nombre
+            if (nombreInput.value.trim() === '') {
+                document.getElementById('nombreError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value.trim())) {
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            // Validate mensaje
+            if (mensajeInput.value.trim() === '') {
+                document.getElementById('mensajeError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            // If valid, show success and reset form
+            if (isValid) {
+                document.getElementById('successMessage').classList.remove('hidden');
+                contactForm.reset();
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.add('hidden');
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
